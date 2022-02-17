@@ -23,13 +23,10 @@ class ducati:
 
   
     def run(self, img, info):
-        myinfo = info[self.name]
         loc, game_point = info[self.name]
         rows = 15 #compressed size of rows
         cols = 15 #compressed size of collums
         grid=[]
-        matrix = np.zeros((rows,cols), int) #compressed matrix
-        lines = matrix.tolist()
         
         
         point = [[[1,1,1],0],[[225,1,1],100],[[1,255,1],50],[[1,1,255],30],[[200,200,1],20],
@@ -39,9 +36,8 @@ class ducati:
         
         #in this loop the points transform as a class objext(Node class)
         for i in range(rows):
-            row = lines[i]
             row_nodes = []
-            for j in range(len(row)):
+            for j in range(cols):
                 node = Node(grid, j, i)
                 row_nodes.append(node)
             grid.append(row_nodes)
@@ -105,7 +101,15 @@ class Node:
                 neighbors.append(self.grid[neighbor_y][neighbor_x])
         return neighbors
   
-
+'''
+This pathfind function is main function of the project. It is for finding best 
+path for the determined step size. The step variable is for that. The start
+varible is the start point, path stores the path for every checked point, best 
+variable stores the game point, score is the total score of the path, maxi is 
+the score of the best path pathmax stores the points of the best path and t shows
+how steps were taken. 
+'''
+        
             
             
 def pathfind (start,step,path,best,score=0,maxi=0,pathmax=[],t=0,):
