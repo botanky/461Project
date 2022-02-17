@@ -24,7 +24,6 @@ class ducati:
   
     def run(self, img, info):
         myinfo = info[self.name]
-        print(info[self.name])
         loc, game_point = info[self.name]
         rows = 15 #compressed size of rows
         cols = 15 #compressed size of collums
@@ -63,8 +62,6 @@ class ducati:
         start=grid[startx][starty] #the start point as the Node class object
         stepsize=5 #the step size the code search for one run
         close = [] #this is used in pathfind function to follow path
-        print(start.y,start.x) 
-        print(start.color)
         maxi, pat = pathfind(start,stepsize,close,game_point)
         ppath=[]
         print(maxi)
@@ -75,11 +72,9 @@ class ducati:
         ppath = []
         ppath.append([pat[0].y*50+25,pat[0].x*50+25])
         for i in pat[1:]:
-            print([i.y*50+25,i.x*50+25])
             realpat.append([i.y*50+25,i.x*50+25])
             ppath.append([i.y*50+25,i.x*50+25])
         for i in range(len(ppath)-1):
-            print(realpat[i])
             if not realpat[i][0] == ppath[i+1][0] or realpat[i][1] == ppath[i+1][1]:
                 cor0 = realpat[i][0] - ppath[i][0]
                 cor1 = realpat[i][1] - ppath[i][1]
