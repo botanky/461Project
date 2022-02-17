@@ -64,7 +64,6 @@ class ducati:
         close = [] #this is used in pathfind function to follow path
         maxi, pat = pathfind(start,stepsize,close,game_point)
         ppath=[]
-        print(maxi)
         if maxi == 0:
             maxi, pat = pathfind(start,9,close,game_point)
         realpat = []
